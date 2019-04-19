@@ -1,6 +1,6 @@
 /**
  * @license
- * Copyright Google LLC All Rights Reserved.
+ * Copyright Google Inc. All Rights Reserved.
  *
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
@@ -155,7 +155,7 @@ class MomentDateAdapter extends DateAdapter {
         if (date < 1) {
             throw Error(`Invalid date "${date}". Date has to be greater than 0.`);
         }
-        let /** @type {?} */ result = moment({ year, month, date }).locale(this.locale);
+        let /** @type {?} */ result = moment.utc({ year, month, date }).locale(this.locale);
         // If the result isn't valid, the date must have been out of bounds for this month.
         if (!result.isValid()) {
             throw Error(`Invalid date "${date}" for month with index "${month}".`);
