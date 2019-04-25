@@ -166,7 +166,7 @@ class MomentDateAdapter extends DateAdapter {
      * @return {?}
      */
     today() {
-        return moment().locale(this.locale);
+        return moment.utc().locale(this.locale);
     }
     /**
      * @param {?} value
@@ -175,9 +175,9 @@ class MomentDateAdapter extends DateAdapter {
      */
     parse(value, parseFormat) {
         if (value && typeof value == 'string') {
-            return moment(value, parseFormat, this.locale);
+            return moment.utc(value, parseFormat, this.locale);
         }
-        return value ? moment(value).locale(this.locale) : null;
+        return value ? moment.utc(value).locale(this.locale) : null;
     }
     /**
      * @param {?} date
@@ -227,7 +227,7 @@ class MomentDateAdapter extends DateAdapter {
      * @return {?}
      */
     fromIso8601(iso8601String) {
-        let /** @type {?} */ d = moment(iso8601String, moment.ISO_8601).locale(this.locale);
+        let /** @type {?} */ d = moment.utc(iso8601String, moment.ISO_8601).locale(this.locale);
         return this.isValid(d) ? d : null;
     }
     /**

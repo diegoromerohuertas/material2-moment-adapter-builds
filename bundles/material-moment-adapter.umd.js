@@ -198,7 +198,7 @@ var MomentDateAdapter = (function (_super) {
      * @return {?}
      */
     MomentDateAdapter.prototype.today = function () {
-        return moment().locale(this.locale);
+        return moment.utc().locale(this.locale);
     };
     /**
      * @param {?} value
@@ -207,9 +207,9 @@ var MomentDateAdapter = (function (_super) {
      */
     MomentDateAdapter.prototype.parse = function (value, parseFormat) {
         if (value && typeof value == 'string') {
-            return moment(value, parseFormat, this.locale);
+            return moment.utc(value, parseFormat, this.locale);
         }
-        return value ? moment(value).locale(this.locale) : null;
+        return value ? moment.utc(value).locale(this.locale) : null;
     };
     /**
      * @param {?} date
@@ -259,7 +259,7 @@ var MomentDateAdapter = (function (_super) {
      * @return {?}
      */
     MomentDateAdapter.prototype.fromIso8601 = function (iso8601String) {
-        var /** @type {?} */ d = moment(iso8601String, moment.ISO_8601).locale(this.locale);
+        var /** @type {?} */ d = moment.utc(iso8601String, moment.ISO_8601).locale(this.locale);
         return this.isValid(d) ? d : null;
     };
     /**
